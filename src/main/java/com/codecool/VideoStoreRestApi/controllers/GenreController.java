@@ -40,5 +40,9 @@ public class GenreController {
         return genreService.createGenre(title, description);
     }
 
+    @RequestMapping(value = "/{id}/movies", method = RequestMethod.GET)
+    public Collection<Movie> getGenreMovies(@PathVariable("id") int id){
+        return genreService.getGenreMovies(id);
+    }
 
 }
