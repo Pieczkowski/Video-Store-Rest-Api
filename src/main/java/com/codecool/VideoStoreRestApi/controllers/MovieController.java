@@ -21,5 +21,11 @@ public class MovieController {
         return movieService.getAll();
     }
 
+    @RequestMapping(value = "/store/movies?...", method = RequestMethod.POST)
+    public void postMovie(){
+        //TODO
+        return moviesService.createMovie();
+    }
+
 
 }
