@@ -30,14 +30,14 @@ public class GenreController {
                          @RequestParam(value = "title", required = false) String title,
                          @RequestParam(value = "desc", required = false) String description){
 
-        return genreService.updateGenre(id, title, description);
+        genreService.updateGenre(id, title, description, movieId);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public void postGenre(@RequestParam(value = "title") String title,
+    public void postGenre(@RequestParam(value = "name") String title,
                           @RequestParam(value = "desc") String description){
 
-        return genreService.createGenre(title, description);
+        genreService.createGenre(title, description);
     }
 
     @RequestMapping(value = "/{id}/movies", method = RequestMethod.GET)
