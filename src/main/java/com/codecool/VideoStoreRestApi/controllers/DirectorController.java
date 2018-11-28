@@ -29,8 +29,13 @@ public class DirectorController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void deleteSDirectorById(@PathVariable("id") int id){
-        directorService.removeDirectorById(id);
+    public void deleteDirectorById(@PathVariable("id") int id){
+        directorService.deleteDirectorById(id);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE)
+    public void deleteAllDirectors(){
+        directorService.deleteAllDirectors();
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
@@ -45,7 +50,7 @@ public class DirectorController {
         directorService.insertDirectorToDb(director);
     }
 
-    @RequestMapping(value = "/{id}/movies", method = RequestMethod.POST)
+    @RequestMapping(value = "/{id}/movies", method = RequestMethod.GET)
     public void getDirectorMovies(@RequestBody Director director){
         //TODO
     }
