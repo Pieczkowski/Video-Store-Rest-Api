@@ -53,7 +53,7 @@ public class DirectorController {
     }
 
     @RequestMapping(value = "/{id}/movies", method = RequestMethod.GET)
-    public void getDirectorMovies(@RequestBody Director director){
-        //TODO
+    public Collection<Movie> getDirectorMovies(@PathVariable("id") int id){
+        return directorService.getDirectorMovies(id);
     }
 }
