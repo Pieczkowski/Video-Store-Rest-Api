@@ -7,7 +7,7 @@ import java.util.Set;
 
 @Entity
 @Table(name="movies")
-public class Movies {
+public class Movie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,10 +20,10 @@ public class Movies {
             joinColumns = { @JoinColumn(name = "id_movie") },
             inverseJoinColumns = { @JoinColumn(name = "id_genre") }
     )
-    private Set<Genres> genres = new HashSet<>();
+    private Set<Genre> genres = new HashSet<>();
 
     @ManyToOne
-    private Directors directors;
+    private Director directors;
 
     private Date year;
     private int length;
@@ -44,11 +44,11 @@ public class Movies {
         this.title = title;
     }
 
-    public Directors getDirectors() {
+    public Director getDirectors() {
         return directors;
     }
 
-    public void setDirectors(Directors directors) {
+    public void setDirectors(Director directors) {
         this.directors = directors;
     }
 
@@ -68,11 +68,11 @@ public class Movies {
         this.length = length;
     }
 
-    public Set<Genres> getGenres() {
+    public Set<Genre> getGenres() {
         return genres;
     }
 
-    public void setGenres(Set<Genres> genres) {
+    public void setGenres(Set<Genre> genres) {
         this.genres = genres;
     }
 

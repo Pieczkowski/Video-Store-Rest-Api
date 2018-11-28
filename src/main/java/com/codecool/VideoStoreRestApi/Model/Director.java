@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "directors")
-public class Directors {
+public class Director {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,9 +17,9 @@ public class Directors {
     private String last_name;
 
     @OneToMany(mappedBy = "directors")
-    private List<Movies> movies = new ArrayList<>();
+    private List<Movie> movies = new ArrayList<>();
 
-    public Directors(){}
+    public Director(){}
 
 
 
@@ -47,11 +47,11 @@ public class Directors {
         this.last_name = last_name;
     }
 
-    public List<Movies> getMovies() {
+    public List<Movie> getMovies() {
         return movies;
     }
 
-    public void setMovies(List<Movies> movies) {
+    public void setMovies(List<Movie> movies) {
         this.movies = movies;
     }
 }

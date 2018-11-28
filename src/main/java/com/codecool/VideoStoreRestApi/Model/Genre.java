@@ -6,7 +6,7 @@ import java.util.Set;
 
 @Entity
 @Table(name="genres")
-public class Genres {
+public class Genre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,7 +15,7 @@ public class Genres {
     private String description;
 
     @ManyToMany(mappedBy = "genres")
-    private Set<Movies> movies = new HashSet<>();
+    private Set<Movie> movies = new HashSet<>();
 
     public int getId_genre() {
         return id_genre;
@@ -41,11 +41,11 @@ public class Genres {
         this.description = description;
     }
 
-    public Set<Movies> getMovies() {
+    public Set<Movie> getMovies() {
         return movies;
     }
 
-    public void setMovies(Set<Movies> movies) {
+    public void setMovies(Set<Movie> movies) {
         this.movies = movies;
     }
 }
