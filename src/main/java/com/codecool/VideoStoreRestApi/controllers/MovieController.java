@@ -43,6 +43,9 @@ public class MovieController {
         return moviesService.deleteAllMovies(id);
     }
 
-
+    @RequestMapping(value = "/store/movies/{id}", method = RequestMethod.GET)
+    public Movie getMovie(@PathVariable("id") int id){
+        return moviesService.getById(id);
+    }
 
 }
