@@ -25,27 +25,27 @@ public class MovieController {
     @RequestMapping(value = "/store/movies?...", method = RequestMethod.POST)
     public void postMovie(){
         //TODO
-        return moviesService.createMovie();
+        return movieService.createMovie();
     }
 
     @RequestMapping(value = "/store/movies/{id}?...", method = RequestMethod.PUT)
     public void putMovie(@PathVariable("id") int id){
         //TODO
-        return moviesService.updateMovie(id);
+        return movieService.updateMovie(id);
     }
 
     @RequestMapping(value = "/store/movies/{id}", method = RequestMethod.DELETE)
     public void deleteMovie(@PathVariable(value = "id") int id){
-        return moviesService.deleteMovie(id);
+        return movieService.deleteMovie(id);
     }
     @RequestMapping(value = "/store/movies", method = RequestMethod.DELETE)
     public void deleteAllMovies(){
-        return moviesService.deleteAllMovies();
+        return movieService.deleteAllMovies();
     }
 
     @RequestMapping(value = "/store/movies/{id}", method = RequestMethod.GET)
     public Movie getMovie(@PathVariable("id") int id){
-        return moviesService.getById(id);
+        return movieService.getById(id);
     }
 
 }
