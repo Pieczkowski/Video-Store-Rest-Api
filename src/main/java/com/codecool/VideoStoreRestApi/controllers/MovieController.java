@@ -32,10 +32,15 @@ public class MovieController {
         return movieService.createMovie(title, director, year, length);
     }
 
-    @RequestMapping(value = "/{id}?...", method = RequestMethod.PUT)
-    public void putMovie(@PathVariable("id") int id){
-        //TODO
-        return movieService.updateMovie(id);
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public void putMovie(@PathVariable("id") int id,
+                         @RequestParam(value = "title", required = false) String title,
+                         @RequestParam(value = "director", required = false) String director,
+                         @RequestParam(value = "genre", required = false) String genre,
+                         @RequestParam(value = "year", required = false) Date year,
+                         @RequestParam(value = "length", required = false) int length){
+
+        return movieService.updateMovie(id, title, director, genre, year, length);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
