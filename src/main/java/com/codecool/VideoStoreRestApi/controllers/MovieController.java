@@ -1,6 +1,7 @@
 package com.codecool.VideoStoreRestApi.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,6 +26,12 @@ public class MovieController {
     public void postMovie(){
         //TODO
         return moviesService.createMovie();
+    }
+
+    @RequestMapping(value = "/store/movies/{id}?...", method = RequestMethod.PUT)
+    public void putMovie(@PathVariable("id") int id){
+        //TODO
+        return moviesService.updateMovie(id);
     }
 
 
