@@ -10,6 +10,7 @@ public class Genre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(columnDefinition = "serial")
     private int id_genre;
     private String name;
     private String description;

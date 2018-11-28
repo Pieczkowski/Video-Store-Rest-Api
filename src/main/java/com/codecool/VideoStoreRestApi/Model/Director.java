@@ -11,6 +11,7 @@ public class Director {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(columnDefinition = "serial")
     private int id_director;
 
     private String first_name;

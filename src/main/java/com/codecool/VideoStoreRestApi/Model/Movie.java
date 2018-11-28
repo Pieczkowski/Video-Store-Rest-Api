@@ -11,6 +11,7 @@ public class Movie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(columnDefinition = "serial")
     private int id_movie;
     private String title;
 
@@ -23,6 +24,7 @@ public class Movie {
     private Set<Genre> genres = new HashSet<>();
 
     @ManyToOne
+    @JoinColumn(name="id_director")
     private Director directors;
 
     private Date year;
