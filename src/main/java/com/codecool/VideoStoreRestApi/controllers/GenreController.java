@@ -25,5 +25,14 @@ public class GenreController {
         return genreService.getById(id);
     }
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public void putGenre(@PathVariable("id") int id,
+                         @RequestParam(value = "title", required = false) String title,
+                         @RequestParam(value = "desc", required = false) String description){
+
+        return genreService.updateGenre(id, title, description);
+    }
+
+
 
 }
