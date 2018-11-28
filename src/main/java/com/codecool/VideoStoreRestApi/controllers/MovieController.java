@@ -38,6 +38,11 @@ public class MovieController {
     public void deleteMovie(@PathVariable(value = "id") int id){
         return moviesService.deleteMovie(id);
     }
+    @RequestMapping(value = "/store/movies", method = RequestMethod.DELETE)
+    public void deleteAllMovies(){
+        return moviesService.deleteAllMovies(id);
+    }
+
 
 
 }
