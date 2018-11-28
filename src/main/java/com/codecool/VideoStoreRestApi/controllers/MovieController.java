@@ -34,5 +34,10 @@ public class MovieController {
         return moviesService.updateMovie(id);
     }
 
+    @RequestMapping(value = "/store/movies/{id}", method = RequestMethod.DELETE)
+    public void deleteMovie(@PathVariable(value = "id") int id){
+        return moviesService.deleteMovie(id);
+    }
+
 
 }
