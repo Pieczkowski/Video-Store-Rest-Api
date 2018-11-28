@@ -33,6 +33,12 @@ public class GenreController {
         return genreService.updateGenre(id, title, description);
     }
 
+    @RequestMapping(method = RequestMethod.POST)
+    public void postGenre(@RequestParam(value = "title") String title,
+                          @RequestParam(value = "desc") String description){
+
+        return genreService.createGenre(title, description);
+    }
 
 
 }
