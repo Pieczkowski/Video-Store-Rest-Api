@@ -1,9 +1,13 @@
 package com.codecool.VideoStoreRestApi.controllers;
 
+import com.codecool.VideoStoreRestApi.model.Movie;
+import com.codecool.VideoStoreRestApi.services.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
+import java.sql.Date;
+import java.util.Collection;
+import java.util.List;
 
 
 @RestController
@@ -18,8 +22,8 @@ public class MovieController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public Collection<Movie> getAllMovies(){
-        return movieService.getAll();
+    public List<Movie> getAllMovies(){
+        return this.movieService.getAll();
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -28,8 +32,8 @@ public class MovieController {
                           @RequestParam("year") Date year,
                           @RequestParam("length") int length
                           ){
-
-        return movieService.createMovie(title, director, year, length);
+        System.out.println("saved");
+         movieService.createMovie(title, director, year, length);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
@@ -56,5 +60,4 @@ public class MovieController {
     public Movie getMovie(@PathVariable("id") int id){
         return movieService.getById(id);
     }
-
 }

@@ -1,4 +1,9 @@
-package com.codecool.VideoStoreRestApi.Model;
+package com.codecool.VideoStoreRestApi.model;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -21,10 +26,14 @@ public class Movie {
             joinColumns = { @JoinColumn(name = "id_movie") },
             inverseJoinColumns = { @JoinColumn(name = "id_genre") }
     )
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id_genre")
+    @JsonIdentityReference(alwaysAsId = true)
     private Set<Genre> genres = new HashSet<>();
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name="id_director")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id_director")
+    @JsonIdentityReference(alwaysAsId = true)
     private Director directors;
 
     private Date year;
