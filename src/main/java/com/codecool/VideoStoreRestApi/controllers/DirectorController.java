@@ -39,9 +39,10 @@ public class DirectorController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public void updateDirectorById(@RequestBody Director director){
-        //TODO
-        directorService.updateDirector(director);
+    public void updateDirectorById(@PathVariable("id") int id,
+                                   @RequestParam("first_name") String first_name,
+                                   @RequestParam("last_name") String last_name){
+        directorService.updateDirector(id, first_name, last_name);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.POST)
