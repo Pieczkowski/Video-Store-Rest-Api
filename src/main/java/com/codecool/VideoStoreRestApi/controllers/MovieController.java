@@ -40,7 +40,7 @@ public class MovieController {
     }
     @RequestMapping(value = "/store/movies", method = RequestMethod.DELETE)
     public void deleteAllMovies(){
-        return moviesService.deleteAllMovies(id);
+        return moviesService.deleteAllMovies();
     }
 
     @RequestMapping(value = "/store/movies/{id}", method = RequestMethod.GET)
