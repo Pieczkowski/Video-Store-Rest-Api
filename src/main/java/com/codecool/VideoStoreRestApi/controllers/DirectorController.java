@@ -45,8 +45,9 @@ public class DirectorController {
         directorService.updateDirector(id, first_name, last_name);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
-    public void insertDirector(@RequestBody Director director){
+    @RequestMapping(method = RequestMethod.POST)
+    public void insertDirector(@RequestParam("first_name") String first_name,
+                               @RequestParam("last_name") String last_name){
         //TODO
         directorService.insertDirectorToDb(director);
     }
