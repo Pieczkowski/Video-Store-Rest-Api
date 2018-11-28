@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
+@RequestMapping("/store/movies")
 public class MovieController {
 
     private MovieService movieService;
@@ -17,28 +18,28 @@ public class MovieController {
         this.movieService = movieService;
     }
 
-    @RequestMapping(value = "/store/movies", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public Collection<Movie> getAllMovies(){
         return movieService.getAll();
     }
 
-    @RequestMapping(value = "/store/movies?...", method = RequestMethod.POST)
+    @RequestMapping(value = "?...", method = RequestMethod.POST)
     public void postMovie(){
         //TODO
         return movieService.createMovie();
     }
 
-    @RequestMapping(value = "/store/movies/{id}?...", method = RequestMethod.PUT)
+    @RequestMapping(value = "/{id}?...", method = RequestMethod.PUT)
     public void putMovie(@PathVariable("id") int id){
         //TODO
         return movieService.updateMovie(id);
     }
 
-    @RequestMapping(value = "/store/movies/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteMovie(@PathVariable(value = "id") int id){
         return movieService.deleteMovie(id);
     }
-    @RequestMapping(value = "/store/movies", method = RequestMethod.DELETE)
+    @RequestMapping(method = RequestMethod.DELETE)
     public void deleteAllMovies(){
         return movieService.deleteAllMovies();
     }
