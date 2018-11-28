@@ -52,7 +52,7 @@ public class MovieController {
         return movieService.deleteAllMovies();
     }
 
-    @RequestMapping(value = "/store/movies/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Movie getMovie(@PathVariable("id") int id){
         return movieService.getById(id);
     }
