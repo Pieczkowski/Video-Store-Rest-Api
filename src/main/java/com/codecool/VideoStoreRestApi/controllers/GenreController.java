@@ -14,11 +14,16 @@ public class GenreController {
     GenreController(GenreService genreService){
         this.genreService = genreService;
     }
+
     @RequestMapping(method = RequestMethod.GET)
     public Collection<Genre> getAllGenres(){
         return genreService.getAll();
     }
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public Genre getGenre(@PathVariable("id") int id){
+        return genreService.getById(id);
+    }
 
 
 }
