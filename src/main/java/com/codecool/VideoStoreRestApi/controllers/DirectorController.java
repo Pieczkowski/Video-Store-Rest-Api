@@ -46,10 +46,9 @@ public class DirectorController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public void insertDirector(@RequestParam("first_name") String first_name,
-                               @RequestParam("last_name") String last_name){
-        //TODO
-        directorService.insertDirectorToDb(director);
+    public void postDirector(@RequestParam("first_name") String first_name,
+                             @RequestParam("last_name") String last_name){
+        directorService.createDirector(first_name, last_name);
     }
 
     @RequestMapping(value = "/{id}/movies", method = RequestMethod.GET)
