@@ -16,7 +16,7 @@ public class Director {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(columnDefinition = "serial")
-    private int id_director;
+    private Long id_director;
 
     private String first_name;
     private String last_name;
@@ -31,11 +31,11 @@ public class Director {
 
 
 
-    public int getId_director() {
+    public Long getId_director() {
         return id_director;
     }
 
-    public void setId_director(int id_director) {
+    public void setId_director(Long id_director) {
         this.id_director = id_director;
     }
 
