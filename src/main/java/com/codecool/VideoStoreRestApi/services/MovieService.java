@@ -3,7 +3,6 @@ package com.codecool.VideoStoreRestApi.services;
 
 import com.codecool.VideoStoreRestApi.model.Director;
 import com.codecool.VideoStoreRestApi.model.Movie;
-import com.codecool.VideoStoreRestApi.repositories.DirectorRepository;
 import com.codecool.VideoStoreRestApi.repositories.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -67,7 +66,7 @@ public class MovieService {
     }
     private Director setDirector(String firstNameDirector, String lastNameDirector){
         Director director = new Director();
-        director.setFirst_name(firstNameDirector);
+        director.setFirstName(firstNameDirector);
         director.setLast_name(lastNameDirector);
         this.directorService.saveDirector(director);
         return director;
