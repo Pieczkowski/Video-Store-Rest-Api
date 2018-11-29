@@ -84,8 +84,4 @@ public class MovieService {
     public Movie getById(Long id) {
         return this.movieRepository.findOne(id);
     }
-
-    public Collection<Movie> getMoviesByDirectorId(Director director){
-        return this.movieRepository.findAllByDirectorIs(director);
-    }
 }
