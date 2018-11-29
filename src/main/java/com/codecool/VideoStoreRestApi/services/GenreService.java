@@ -6,7 +6,6 @@ import com.codecool.VideoStoreRestApi.repositories.GenreRepository;
 import com.codecool.VideoStoreRestApi.repositories.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.Collection;
 
 @Service
@@ -20,7 +19,6 @@ public class GenreService {
         this.genreRepository = genreRepository;
         this.movieRepository = movieRepository;
     }
-
 
     public Collection<Genre> getAll() {
         return genreRepository.findAll();

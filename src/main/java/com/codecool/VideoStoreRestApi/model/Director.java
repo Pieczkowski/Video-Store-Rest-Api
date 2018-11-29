@@ -1,11 +1,9 @@
 package com.codecool.VideoStoreRestApi.model;
 
 import com.fasterxml.jackson.annotation.*;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
 
 @Entity
 @Table(name = "directors")
@@ -18,7 +16,6 @@ public class Director {
 
     private String firstName;
     private String lastName;
-
 
     @OneToMany(mappedBy = "directors", cascade = {CascadeType.ALL})
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id_movie")

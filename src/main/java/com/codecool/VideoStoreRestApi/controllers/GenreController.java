@@ -1,6 +1,5 @@
 package com.codecool.VideoStoreRestApi.controllers;
 
-
 import com.codecool.VideoStoreRestApi.model.Genre;
 import com.codecool.VideoStoreRestApi.model.Movie;
 import com.codecool.VideoStoreRestApi.services.GenreService;

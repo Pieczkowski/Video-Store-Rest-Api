@@ -1,13 +1,11 @@
 package com.codecool.VideoStoreRestApi.services;
 
-import com.codecool.VideoStoreRestApi.VideoStoreRestApiApplication;
 import com.codecool.VideoStoreRestApi.model.Director;
 import com.codecool.VideoStoreRestApi.model.Movie;
 import com.codecool.VideoStoreRestApi.repositories.DirectorRepository;
 import com.codecool.VideoStoreRestApi.repositories.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.Collection;
 
 @Service

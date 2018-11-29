@@ -1,12 +1,10 @@
 package com.codecool.VideoStoreRestApi.services;
 
-
 import com.codecool.VideoStoreRestApi.model.Director;
 import com.codecool.VideoStoreRestApi.model.Movie;
 import com.codecool.VideoStoreRestApi.repositories.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import java.sql.Date;
 import java.util.Collection;
 import java.util.List;
@@ -47,8 +45,6 @@ public class MovieService {
     }
 
     public void updateMovie(Long id, String title, Integer idDirector, String yearAsString, Integer length){
-
-
         Movie movie = this.movieRepository.findOne(id);
         if(title != null){
             movie.setTitle(title);
@@ -64,17 +60,6 @@ public class MovieService {
             movie.setLength(length);
         }
         this.movieRepository.save(movie);
-    }
-
-    private boolean checkIfDirectorExist(String firstNameDirector, String lastNameDirector){
-        return this.directorService.isDirectorExist(firstNameDirector, lastNameDirector);
-    }
-    private Director setDirector(String firstNameDirector, String lastNameDirector){
-        Director director = new Director();
-        director.setFirstName(firstNameDirector);
-        director.setLastName(lastNameDirector);
-        this.directorService.saveDirector(director);
-        return director;
     }
 
     public void deleteMovie(Long id) {
@@ -97,5 +82,16 @@ public class MovieService {
 
     public Collection<Movie> getArchived() {
         return this.movieRepository.findMovieByArchivedIsTrue();
+    }
+
+    private boolean checkIfDirectorExist(String firstNameDirector, String lastNameDirector){
+        return this.directorService.isDirectorExist(firstNameDirector, lastNameDirector);
+    }
+    private Director setDirector(String firstNameDirector, String lastNameDirector){
+        Director director = new Director();
+        director.setFirstName(firstNameDirector);
+        director.setLastName(lastNameDirector);
+        this.directorService.saveDirector(director);
+        return director;
     }
 }

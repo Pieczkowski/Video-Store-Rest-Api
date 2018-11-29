@@ -48,6 +48,7 @@ public class MovieController {
     public void deleteMovie(@PathVariable(value = "id") Long id){
         movieService.deleteMovie(id);
     }
+
     @RequestMapping(method = RequestMethod.DELETE)
     public void deleteAllMovies(){
         movieService.deleteAllMovies();
