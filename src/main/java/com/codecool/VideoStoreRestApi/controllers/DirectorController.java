@@ -53,8 +53,8 @@ public class DirectorController {
         directorService.createDirector(first_name, last_name);
     }
 
-//    @RequestMapping(value = "/{id}/movies", method = RequestMethod.GET)
-//    public Collection<Movie> getDirectorMovies(@PathVariable("id") int id_director){
-//        return directorService.getDirectorMovies(id_director);
-//    }
+    @RequestMapping(value = "/{id}/movies", method = RequestMethod.GET)
+    public Collection<Movie> getDirectorMovies(@PathVariable("id") Long id_director){
+        return directorService.getDirectorMovies(id_director);
+    }
 }
