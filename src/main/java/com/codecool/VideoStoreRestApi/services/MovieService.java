@@ -1,6 +1,6 @@
 package com.codecool.VideoStoreRestApi.services;
 
-import com.codecool.VideoStoreRestApi.Exception.MovieNotFoundException;
+import com.codecool.VideoStoreRestApi.Exceptions.MovieNotFoundException;
 import com.codecool.VideoStoreRestApi.model.Director;
 import com.codecool.VideoStoreRestApi.model.Movie;
 import com.codecool.VideoStoreRestApi.repositories.MovieRepository;

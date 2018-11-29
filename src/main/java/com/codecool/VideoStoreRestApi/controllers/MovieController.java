@@ -1,6 +1,5 @@
 package com.codecool.VideoStoreRestApi.controllers;
 
-import com.codecool.VideoStoreRestApi.Exception.MovieNotFoundException;
 import com.codecool.VideoStoreRestApi.model.Movie;
 import com.codecool.VideoStoreRestApi.services.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
