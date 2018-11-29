@@ -7,4 +7,5 @@ import java.util.Collection;
 
 public interface MovieRepository extends JpaRepository<Movie, Long> {
     Collection<Movie> findMovieByDirectorsIdDirector(Long id);
+    Movie getMovieByIdMovieAndArchivedIsFalse(Long id);
 }

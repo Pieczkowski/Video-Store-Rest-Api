@@ -14,13 +14,13 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(columnDefinition = "serial")
-    private long id_movie;
+    private long idMovie;
     private String title;
 
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
             name = "movies_genres",
-            joinColumns = { @JoinColumn(name = "id_movie") },
+            joinColumns = { @JoinColumn(name = "idMovie") },
             inverseJoinColumns = { @JoinColumn(name = "id_genre") }
     )
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id_genre")
@@ -35,13 +35,15 @@ public class Movie {
 
     private Date year;
     private int length;
+    @Column( columnDefinition = "boolean default false")
+    private Boolean archived;
 
-    public long getId_movie() {
-        return id_movie;
+    public long getIdMovie() {
+        return idMovie;
     }
 
-    public void setId_movie(long id_movie) {
-        this.id_movie = id_movie;
+    public void setIdMovie(long idMovie) {
+        this.idMovie = idMovie;
     }
 
     public String getTitle() {
@@ -84,6 +86,11 @@ public class Movie {
         this.genres = genres;
     }
 
+    public Boolean getArchived() {
+        return archived;
+    }
 
-
+    public void setArchived(Boolean archived) {
+        this.archived = archived;
+    }
 }

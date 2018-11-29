@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.sql.Date;
 import java.util.Collection;
+import java.util.List;
 
 @Component
 public class MovieService {
@@ -53,7 +54,7 @@ public class MovieService {
             movie.setTitle(title);
         }
         if(idDirector != null){
-            movie.setId_movie(idDirector);
+            movie.setIdMovie(idDirector);
         }
         if(yearAsString != null){
             Date year = Date.valueOf(yearAsString + "-01-01");
@@ -77,14 +78,20 @@ public class MovieService {
     }
 
     public void deleteMovie(Long id) {
-        this.movieRepository.delete(id);
+       Movie movie = this.movieRepository.findOne(id);
+       movie.setArchived(true);
+       this.movieRepository.save(movie);
     }
 
     public void deleteAllMovies() {
-        this.movieRepository.deleteAll();
+        List<Movie> listMovies = this.movieRepository.findAll();
+        for (int i = 0; i < listMovies.size(); i++) {
+            listMovies.get(i).setArchived(true);
+            this.movieRepository.save(listMovies.get(i));
+        }
     }
 
     public Movie getById(Long id) {
-        return this.movieRepository.findOne(id);
+        return this.movieRepository.getMovieByIdMovieAndArchivedIsFalse(id);
     }
 }

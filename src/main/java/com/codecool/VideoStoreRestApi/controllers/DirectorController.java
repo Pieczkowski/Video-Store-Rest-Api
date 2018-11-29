@@ -1,5 +1,6 @@
 package com.codecool.VideoStoreRestApi.controllers;
 
+import com.codecool.VideoStoreRestApi.VideoStoreRestApiApplication;
 import com.codecool.VideoStoreRestApi.model.Director;
 import com.codecool.VideoStoreRestApi.model.Movie;
 import com.codecool.VideoStoreRestApi.services.DirectorService;
