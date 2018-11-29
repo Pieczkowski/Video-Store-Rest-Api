@@ -28,9 +28,9 @@ public class Movie {
     private Set<Genre> genres = new HashSet<>();
 
     @ManyToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name="id_director")
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id_director")
-    @JsonIgnoreProperties({"id_director", "movies"})
+    @JoinColumn(name="idDirector")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idDirector")
+    @JsonIgnoreProperties({"idDirector", "movies"})
     private Director directors;
 
     private Date year;
