@@ -57,4 +57,9 @@ public class MovieController {
     public Movie getMovie(@PathVariable("id") Long id){
         return movieService.getById(id);
     }
+
+    @RequestMapping(value = "/archived", method = RequestMethod.GET)
+    public Collection<Movie> getArchivedMovies(){
+        return movieService.getArchived();
+    }
 }

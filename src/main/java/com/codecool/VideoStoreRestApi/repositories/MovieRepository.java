@@ -9,4 +9,5 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
     Collection<Movie> findMovieByDirectorsIdDirector(Long id);
     Movie getMovieByIdMovieAndArchivedIsFalse(Long id);
     Collection<Movie> findMovieByArchivedIsFalse();
+    Collection<Movie> findMovieByArchivedIsTrue();
 }

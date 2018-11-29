@@ -94,4 +94,8 @@ public class MovieService {
     public Movie getById(Long id) {
         return this.movieRepository.getMovieByIdMovieAndArchivedIsFalse(id);
     }
+
+    public Collection<Movie> getArchived() {
+        return this.movieRepository.findMovieByArchivedIsTrue();
+    }
 }
