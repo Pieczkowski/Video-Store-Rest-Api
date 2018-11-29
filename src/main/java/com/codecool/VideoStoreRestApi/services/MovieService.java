@@ -47,7 +47,6 @@ public class MovieService {
 
     public void updateMovie(Long id, String title, Integer idDirector, String yearAsString, Integer length){
 
-        Date year = Date.valueOf(yearAsString);
 
         Movie movie = this.movieRepository.findOne(id);
         if(title != null){
@@ -56,7 +55,8 @@ public class MovieService {
         if(idDirector != null){
             movie.setId_movie(idDirector);
         }
-        if(year != null){
+        if(yearAsString != null){
+            Date year = Date.valueOf(yearAsString + "-01-01");
             movie.setYear(year);
         }
         if(length  != null){
