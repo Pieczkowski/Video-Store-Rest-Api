@@ -28,7 +28,7 @@ public class MovieController {
     @RequestMapping(method = RequestMethod.POST)
     public void postMovie(@RequestParam("title") String title,
                           @RequestParam("firstNameDirector") String firstNameDirector,
-                          @RequestParam("lastNameDirecotr") String lastNameDirector,
+                          @RequestParam("lastNameDirector") String lastNameDirector,
                           @RequestParam("year") Date year,
                           @RequestParam("length") int length
                           ){
@@ -36,14 +36,13 @@ public class MovieController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public void putMovie(@PathVariable("id") int id,
+    public void putMovie(@PathVariable("id") Long id,
                          @RequestParam(value = "title", required = false) String title,
-                         @RequestParam(value = "firstNameDirector", required = false) String firstNameDirector,
-                         @RequestParam(value = "lastNameDirector", required = false) String lastNameDirector,
+                         @RequestParam(value = "idDirector", required = false) Integer idDirector,
                          @RequestParam(value = "year", required = false) Date year,
-                         @RequestParam(value = "length", required = false) int length){
+                         @RequestParam(value = "length", required = false) Integer length){
 
-        this.movieService.updateMovie(title, String firstNameDirector, String lastNameDirector, year, length);
+        this.movieService.updateMovie(id, title, idDirector, year, length);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
