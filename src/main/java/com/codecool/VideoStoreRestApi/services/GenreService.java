@@ -23,14 +23,14 @@ public class GenreService {
 
 
     public Collection<Genre> getAll() {
-        return genreRepository.getAll();
+        return genreRepository.findAll();
     }
 
     public Genre getById(Long id) {
         return genreRepository.findOne(id);
     }
 
-    public void updateGenre(int id, String name, String description, Integer movieId) {
+    public void updateGenre(Long id, String name, String description, Long movieId) {
         Genre genre = getById(id);
         if (name != null){
             genre.setName(name);
@@ -39,7 +39,7 @@ public class GenreService {
             genre.setDescription(description);
         }
         if (movieId != null){
-            Movie movie = moviesRepository.getById(movieId);
+            Movie movie = movieRepository.findOne(movieId);
             genre.addMovies(movie);
         }
         genreRepository.save(genre);
@@ -52,7 +52,7 @@ public class GenreService {
         genreRepository.save(genre);
     }
 
-    public Collection<Movie> getGenreMovies(int id) {
-        return genreRepository.getById(id).getMovies();
+    public Collection<Movie> getGenreMovies(Long id) {
+        return genreRepository.findOne(id).getMovies();
     }
 }
