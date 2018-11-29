@@ -55,7 +55,7 @@ public class MovieController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Movie getMovie(@PathVariable("id") int id){
+    public Movie getMovie(@PathVariable("id") Long id){
         return movieService.getById(id);
     }
 }

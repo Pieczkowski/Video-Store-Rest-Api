@@ -80,4 +80,8 @@ public class MovieService {
     public void deleteAllMovies() {
         this.movieRepository.deleteAll();
     }
+
+    public Movie getById(Long id) {
+        return this.movieRepository.findOne(id);
+    }
 }
