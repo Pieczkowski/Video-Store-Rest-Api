@@ -26,12 +26,12 @@ public class DirectorController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Director getDirector(@PathVariable("id") int id_director){
+    public Director getDirector(@PathVariable("id") Long id_director){
         return directorService.getDirectorById(id_director);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void deleteDirectorById(@PathVariable("id") int id_director){
+    public void deleteDirectorById(@PathVariable("id") Long id_director){
         directorService.deleteDirectorById(id_director);
     }
 
@@ -41,7 +41,7 @@ public class DirectorController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public void updateDirectorById(@PathVariable("id") int id_director,
+    public void updateDirectorById(@PathVariable("id") Long id_director,
                                    @RequestParam(value = "first_name", required = false) String first_name,
                                    @RequestParam("last_name") String last_name){
         directorService.updateDirector(id_director, first_name, last_name);
