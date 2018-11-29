@@ -21,19 +21,19 @@ public class DirectorService {
         return this.directorRepository.findAll();
     }
 
-    public Director getDirectorById(int id) {
-        return this.directorRepository.findOne((long) id);
+    public Director getDirectorById(Long id) {
+        return this.directorRepository.findOne(id);
     }
 
-    public void deleteDirectorById(int id_director) {
-        this.directorRepository.delete((long) id_director);
+    public void deleteDirectorById(Long id_director) {
+        this.directorRepository.delete(id_director);
     }
 
     public void deleteAllDirectors() {
         this.directorRepository.deleteAll();
     }
 
-    public void updateDirector(int id, String first_name, String last_name) {
+    public void updateDirector(Long id, String first_name, String last_name) {
         Director director = getDirectorById(id);
         if(first_name != null){
             director.setFirst_name(first_name);
