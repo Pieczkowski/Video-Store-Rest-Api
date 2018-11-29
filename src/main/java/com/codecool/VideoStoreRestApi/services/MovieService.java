@@ -27,7 +27,7 @@ public class MovieService {
     }
 
     public void createMovie(String title, String firstNameDirector, String lastNameDirector, String yearAsString, int length) {
-        Date year = Date.valueOf(yearAsString);
+        Date year = Date.valueOf(yearAsString + "-01-01");
         Movie movie = new Movie();
         Director director;
 
