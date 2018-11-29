@@ -80,13 +80,10 @@ public class MovieService {
         return this.movieRepository.getMovieByIdMovieAndArchivedIsFalse(id);
     }
 
-    public Collection<Movie> getArchived() {
-        return this.movieRepository.findMovieByArchivedIsTrue();
-    }
-
     private boolean checkIfDirectorExist(String firstNameDirector, String lastNameDirector){
         return this.directorService.isDirectorExist(firstNameDirector, lastNameDirector);
     }
+
     private Director setDirector(String firstNameDirector, String lastNameDirector){
         Director director = new Director();
         director.setFirstName(firstNameDirector);
