@@ -1,9 +1,6 @@
 package com.codecool.VideoStoreRestApi.model;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -17,7 +14,7 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(columnDefinition = "serial")
-    private int id_movie;
+    private long id_movie;
     private String title;
 
     @ManyToMany(cascade = { CascadeType.ALL })
@@ -27,23 +24,23 @@ public class Movie {
             inverseJoinColumns = { @JoinColumn(name = "id_genre") }
     )
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id_genre")
-    @JsonIdentityReference(alwaysAsId = true)
+    @JsonIgnoreProperties({"description", "id_genre", "movies"})
     private Set<Genre> genres = new HashSet<>();
 
     @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name="id_director")
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id_director")
-    @JsonIdentityReference(alwaysAsId = true)
+    @JsonIgnoreProperties({"id_director", "movies"})
     private Director directors;
 
     private Date year;
     private int length;
 
-    public int getId_movie() {
+    public long getId_movie() {
         return id_movie;
     }
 
-    public void setId_movie(int id_movie) {
+    public void setId_movie(long id_movie) {
         this.id_movie = id_movie;
     }
 

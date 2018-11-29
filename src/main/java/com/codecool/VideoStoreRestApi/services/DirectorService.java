@@ -36,7 +36,7 @@ public class DirectorService {
     public void updateDirector(Long id, String first_name, String last_name) {
         Director director = getDirectorById(id);
         if(first_name != null){
-            director.setFirst_name(first_name);
+            director.setFirstName(first_name);
         }
         if(last_name != null){
             director.setLast_name(last_name);
@@ -46,7 +46,7 @@ public class DirectorService {
 
     public void createDirector(String first_name, String last_name) {
         Director director = new Director();
-        director.setFirst_name(first_name);
+        director.setFirstName(first_name);
         director.setLast_name(last_name);
 
         this.directorRepository.save(director);
@@ -62,14 +62,15 @@ public class DirectorService {
 
 
     public boolean isDirectorExist(String firstName, String lastName){
-        Director director = this.directorRepository.getByFirst_nameAndLast_name(firstName, lastName);
-        if(director != null){
-            return true;
-        }
-        return false;
+//        Director director = this.directorRepository.getByFirst_nameAndLast_name(firstName, lastName);
+//        if(director != null){
+//            return true;
+//        }
+//        return false;
+        return this.directorRepository.existsDirectorByFirstNameAndLastName(firstName, lastName);
     }
 
     public Director getDirector(String firstName, String lastName) {
-        return this.directorRepository.getByFirst_nameAndLast_name(firstName, lastName);
+        return this.directorRepository.getDirectorByFirstNameAndLastName(firstName, lastName);
     }
 }

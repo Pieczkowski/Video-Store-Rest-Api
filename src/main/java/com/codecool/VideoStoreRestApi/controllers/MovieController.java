@@ -33,6 +33,7 @@ public class MovieController {
                           @RequestParam("length") int length
                           ){
         this.movieService.createMovie(title, firstNameDirector, lastNameDirector, year, length);
+//        http://localhost:8080/store/movies?title=dupa&firstNameDirector=dupaName&lastNameDirector=dupaLastName2&year=2012-01-24&length=32
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
