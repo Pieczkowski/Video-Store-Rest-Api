@@ -1,5 +1,6 @@
 package com.codecool.VideoStoreRestApi.services;
 
+import com.codecool.VideoStoreRestApi.Exceptions.GenreNotFoundException;
 import com.codecool.VideoStoreRestApi.model.Genre;
 import com.codecool.VideoStoreRestApi.model.Movie;
 import com.codecool.VideoStoreRestApi.repositories.GenreRepository;
@@ -21,11 +22,15 @@ public class GenreService {
     }
 
     public Collection<Genre> getAll() {
+        Collection<Genre> genreList = this.genreRepository.findAll();
+        if(genreList.isEmpty()) throw new GenreNotFoundException("no any genre was found");
         return genreRepository.findAll();
     }
 
     public Genre getById(Long id) {
-        return genreRepository.findOne(id);
+        Genre genre = genreRepository.findOne(id);
+        if(genre == null) throw new GenreNotFoundException("no any genre was found");
+        return genre;
     }
 
     public void updateGenre(Long id, String name, String description, Long movieId) {
@@ -51,6 +56,8 @@ public class GenreService {
     }
 
     public Collection<Movie> getGenreMovies(Long id) {
-        return genreRepository.findOne(id).getMovies();
+        Collection<Movie> moviesList = genreRepository.findOne(id).getMovies();
+        if(moviesList.isEmpty()) throw new GenreNotFoundException("no any genre was found");
+        return moviesList;
     }
 }
