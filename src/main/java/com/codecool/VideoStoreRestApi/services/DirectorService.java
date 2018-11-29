@@ -62,9 +62,14 @@ public class DirectorService {
 
 
     public boolean isDirectorExist(String firstName, String lastName){
-        return this.directorRepository.existsDirectorByFirst_namAndLast_name(firstName, lastName);
+        Director director = this.directorRepository.getByFirst_nameAndLast_name(firstName, lastName);
+        if(director != null){
+            return true;
+        }
+        return false;
     }
+
     public Director getDirector(String firstName, String lastName) {
-        return this.directorRepository.getDirectorByFirst_nameAndLast_name(firstName, lastName);
+        return this.directorRepository.getByFirst_nameAndLast_name(firstName, lastName);
     }
 }
