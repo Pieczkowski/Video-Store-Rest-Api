@@ -72,4 +72,12 @@ public class MovieService {
         this.directorService.saveDirector(director);
         return director;
     }
+
+    public void deleteMovie(Long id) {
+        this.movieRepository.delete(id);
+    }
+
+    public void deleteAllMovies() {
+        this.movieRepository.deleteAll();
+    }
 }

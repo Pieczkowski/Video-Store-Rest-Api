@@ -46,12 +46,12 @@ public class MovieController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void deleteMovie(@PathVariable(value = "id") int id){
-        return movieService.deleteMovie(id);
+    public void deleteMovie(@PathVariable(value = "id") Long id){
+        movieService.deleteMovie(id);
     }
     @RequestMapping(method = RequestMethod.DELETE)
     public void deleteAllMovies(){
-        return movieService.deleteAllMovies();
+        movieService.deleteAllMovies();
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
