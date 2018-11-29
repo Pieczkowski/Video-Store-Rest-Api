@@ -1,8 +1,8 @@
 package com.codecool.VideoStoreRestApi.controllers;
 
 
-import com.codecool.VideoStoreRestApi.Model.Genre;
-import com.codecool.VideoStoreRestApi.Model.Movie;
+import com.codecool.VideoStoreRestApi.model.Genre;
+import com.codecool.VideoStoreRestApi.model.Movie;
 import com.codecool.VideoStoreRestApi.services.GenreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
