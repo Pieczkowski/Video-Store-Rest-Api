@@ -26,7 +26,8 @@ public class MovieService {
         return this.movieRepository.findAll();
     }
 
-    public void createMovie(String title, String firstNameDirector, String lastNameDirector, Date year, int length) {
+    public void createMovie(String title, String firstNameDirector, String lastNameDirector, String yearAsString, int length) {
+        Date year = Date.valueOf(yearAsString);
         Movie movie = new Movie();
         Director director;
 
@@ -44,7 +45,10 @@ public class MovieService {
        this.movieRepository.save(movie);
     }
 
-    public void updateMovie(Long id, String title, Integer idDirector, Date year, Integer length){
+    public void updateMovie(Long id, String title, Integer idDirector, String yearAsString, Integer length){
+
+        Date year = Date.valueOf(yearAsString);
+
         Movie movie = this.movieRepository.findOne(id);
         if(title != null){
             movie.setTitle(title);

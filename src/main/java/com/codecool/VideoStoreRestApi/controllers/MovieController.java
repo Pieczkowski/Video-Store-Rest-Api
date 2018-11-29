@@ -29,21 +29,20 @@ public class MovieController {
     public void postMovie(@RequestParam("title") String title,
                           @RequestParam("firstNameDirector") String firstNameDirector,
                           @RequestParam("lastNameDirector") String lastNameDirector,
-                          @RequestParam("year") Date year,
+                          @RequestParam("year") String yearAsString,
                           @RequestParam("length") int length
                           ){
-        this.movieService.createMovie(title, firstNameDirector, lastNameDirector, year, length);
-//        http://localhost:8080/store/movies?title=dupa&firstNameDirector=dupaName&lastNameDirector=dupaLastName2&year=2012-01-24&length=32
+        this.movieService.createMovie(title, firstNameDirector, lastNameDirector, yearAsString, length);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public void putMovie(@PathVariable("id") Long id,
                          @RequestParam(value = "title", required = false) String title,
                          @RequestParam(value = "idDirector", required = false) Integer idDirector,
-                         @RequestParam(value = "year", required = false) Date year,
+                         @RequestParam(value = "year", required = false) String yearAsString,
                          @RequestParam(value = "length", required = false) Integer length){
 
-        this.movieService.updateMovie(id, title, idDirector, year, length);
+        this.movieService.updateMovie(id, title, idDirector, yearAsString, length);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
