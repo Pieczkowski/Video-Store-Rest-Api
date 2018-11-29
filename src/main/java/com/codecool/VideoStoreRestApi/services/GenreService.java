@@ -1,8 +1,9 @@
 package com.codecool.VideoStoreRestApi.services;
 
-import com.codecool.VideoStoreRestApi.Model.Genre;
-import com.codecool.VideoStoreRestApi.Model.Movie;
-import com.codecool.VideoStoreRestApi.repositories.MoviesRepository;
+import com.codecool.VideoStoreRestApi.model.Genre;
+import com.codecool.VideoStoreRestApi.model.Movie;
+import com.codecool.VideoStoreRestApi.repositories.GenreRepository;
+import com.codecool.VideoStoreRestApi.repositories.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,8 +26,8 @@ public class GenreService {
         return genreRepository.getAll();
     }
 
-    public Genre getById(int id) {
-        return genreRepository.getById(id);
+    public Genre getById(Long id) {
+        return genreRepository.findOne(id);
     }
 
     public void updateGenre(int id, String name, String description, Integer movieId) {
