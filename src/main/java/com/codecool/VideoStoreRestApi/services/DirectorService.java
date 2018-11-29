@@ -18,7 +18,7 @@ public class DirectorService {
     }
 
     public Collection<Director> getAllDirectors() {
-        return (Collection<Director>) this.directorRepository.findAll();
+        return this.directorRepository.findAll();
     }
 
     public Director getDirectorById(int id) {

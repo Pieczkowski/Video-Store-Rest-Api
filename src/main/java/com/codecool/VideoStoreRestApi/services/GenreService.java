@@ -13,12 +13,12 @@ import java.util.Collection;
 public class GenreService {
 
     private GenreRepository genreRepository;
-    private MoviesRepository moviesRepository;
+    private MovieRepository movieRepository;
 
     @Autowired
-    public GenreService(GenreRepository genreRepository, MoviesRepository moviesRepository){
+    public GenreService(GenreRepository genreRepository, MovieRepository movieRepository){
         this.genreRepository = genreRepository;
-        this.moviesRepository = moviesRepository;
+        this.movieRepository = movieRepository;
     }
 
 
