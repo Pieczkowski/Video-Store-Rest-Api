@@ -1,7 +1,7 @@
 package com.codecool.VideoStoreRestApi.controllers;
 
-import com.codecool.VideoStoreRestApi.Model.Director;
-import com.codecool.VideoStoreRestApi.Model.Movie;
+import com.codecool.VideoStoreRestApi.model.Director;
+import com.codecool.VideoStoreRestApi.model.Movie;
 import com.codecool.VideoStoreRestApi.services.DirectorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

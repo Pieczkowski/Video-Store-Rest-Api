@@ -55,4 +55,8 @@ public class Genre {
     public void setMovies(Set<Movie> movies) {
         this.movies = movies;
     }
+
+    public void addMovies(Movie movie){
+        movies.add(movie);
+    }
 }

@@ -1,7 +1,5 @@
 package com.codecool.VideoStoreRestApi.services;
 
-import com.codecool.VideoStoreRestApi.Model.Director;
-import com.codecool.VideoStoreRestApi.Model.Movie;
 import com.codecool.VideoStoreRestApi.model.Director;
 import com.codecool.VideoStoreRestApi.repositories.DirectorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +18,7 @@ public class DirectorService {
     }
 
     public Collection<Director> getAllDirectors() {
-        return (Collection<Director>) this.directorRepository.findAll();
+        return this.directorRepository.findAll();
     }
 
     public Director getDirectorById(int id) {
