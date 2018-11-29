@@ -6,5 +6,5 @@ import java.util.Collection;
 
 
 public interface MovieRepository extends JpaRepository<Movie, Long> {
-    Collection<Movie> findAllByDirectors(Long id_director);
+    Collection<Movie> findMovieByDirectorsIdDirector(Long id);
 }

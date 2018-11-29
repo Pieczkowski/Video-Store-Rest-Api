@@ -54,7 +54,7 @@ public class DirectorController {
     }
 
     @RequestMapping(value = "/{id}/movies", method = RequestMethod.GET)
-    public Collection<Movie> getDirectorMovies(@PathVariable("id") Long id_director){
-        return directorService.getDirectorMovies(id_director);
+    public Collection<Movie> getDirectorMovies(@PathVariable("id") Long idDirector){
+        return directorService.getDirectorMovies(idDirector);
     }
 }

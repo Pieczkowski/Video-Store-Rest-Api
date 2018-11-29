@@ -1,8 +1,6 @@
 package com.codecool.VideoStoreRestApi.model;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -16,7 +14,7 @@ public class Director {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(columnDefinition = "serial")
-    private Long id_director;
+    private Long idDirector;
 
     private String firstName;
     private String lastName;
@@ -24,19 +22,17 @@ public class Director {
 
     @OneToMany(mappedBy = "directors", cascade = {CascadeType.ALL})
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id_movie")
-    @JsonIdentityReference(alwaysAsId = true)
+    @JsonIgnore
     private List<Movie> movies = new ArrayList<>();
 
     public Director(){}
 
-
-
-    public Long getId_director() {
-        return id_director;
+    public Long getIdDirector() {
+        return idDirector;
     }
 
-    public void setId_director(Long id_director) {
-        this.id_director = id_director;
+    public void setIdDirector(Long idDirector) {
+        this.idDirector = idDirector;
     }
 
     public String getFirstName() {

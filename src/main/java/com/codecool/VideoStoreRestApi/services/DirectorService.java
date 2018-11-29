@@ -29,8 +29,8 @@ public class DirectorService {
         return this.directorRepository.findOne(id);
     }
 
-    public void deleteDirectorById(Long id_director) {
-        this.directorRepository.delete(id_director);
+    public void deleteDirectorById(Long idDirector) {
+        this.directorRepository.delete(idDirector);
     }
 
     public void deleteAllDirectors() {
@@ -69,8 +69,9 @@ public class DirectorService {
         return this.directorRepository.getDirectorByFirstNameAndLastName(firstName, lastName);
     }
 
-    public Collection<Movie> getDirectorMovies(Long id_director){
-        return this.movieRepository.findAllByDirectors(id_director);
+    public Collection<Movie> getDirectorMovies(Long idDirector){
+        return this.movieRepository.findMovieByDirectorsIdDirector(idDirector);
+
     }
 
 }
