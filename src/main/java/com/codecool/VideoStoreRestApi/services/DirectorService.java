@@ -3,6 +3,7 @@ package com.codecool.VideoStoreRestApi.services;
 import com.codecool.VideoStoreRestApi.model.Director;
 import com.codecool.VideoStoreRestApi.model.Movie;
 import com.codecool.VideoStoreRestApi.repositories.DirectorRepository;
+import com.codecool.VideoStoreRestApi.repositories.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,12 +13,12 @@ import java.util.Collection;
 public class DirectorService {
 
     private DirectorRepository directorRepository;
-    private MovieService movieService;
+    private MovieRepository movieRepository;
 
     @Autowired
-    public DirectorService(DirectorRepository directorRepository, MovieService movieService) {
+    public DirectorService(DirectorRepository directorRepository, MovieRepository movieRepository) {
         this.directorRepository = directorRepository;
-        this.movieService = movieService;
+        this.movieRepository = movieRepository;
     }
 
     public Collection<Director> getAllDirectors() {
@@ -55,10 +56,6 @@ public class DirectorService {
         this.directorRepository.save(director);
     }
 
-//    public Collection<Movie> getDirectorMovies(int id){
-//        return this.directorRepository.getMoviesByDirectorId(id);
-//    }
-
     public void saveDirector(Director director){
     this.directorRepository.save(director);
     }
@@ -77,8 +74,7 @@ public class DirectorService {
     }
 
     public Collection<Movie> getDirectorMovies(Long id_director){
-        Director director = getDirectorById(id_director);
-        return this.movieService.getMoviesByDirectorId(director);
+        return this.movieRepository.findAllByDirectors(id_director);
     }
 
 }
