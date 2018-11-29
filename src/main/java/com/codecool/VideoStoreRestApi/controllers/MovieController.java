@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 import java.util.Collection;
-import java.util.List;
 
 
 @RestController
@@ -22,29 +21,29 @@ public class MovieController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<Movie> getAllMovies(){
+    public Collection<Movie> getAllMovies(){
         return this.movieService.getAll();
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public void postMovie(@RequestParam("title") String title,
-                          @RequestParam("director") String director,
+                          @RequestParam("firstNameDirector") String firstNameDirector,
+                          @RequestParam("lastNameDirecotr") String lastNameDirector,
                           @RequestParam("year") Date year,
                           @RequestParam("length") int length
                           ){
-        System.out.println("saved");
-         movieService.createMovie(title, director, year, length);
+        this.movieService.createMovie(title, firstNameDirector, lastNameDirector, year, length);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public void putMovie(@PathVariable("id") int id,
                          @RequestParam(value = "title", required = false) String title,
-                         @RequestParam(value = "director", required = false) String director,
-                         @RequestParam(value = "genre", required = false) String genre,
+                         @RequestParam(value = "firstNameDirector", required = false) String firstNameDirector,
+                         @RequestParam(value = "lastNameDirector", required = false) String lastNameDirector,
                          @RequestParam(value = "year", required = false) Date year,
                          @RequestParam(value = "length", required = false) int length){
 
-        return movieService.updateMovie(id, title, director, genre, year, length);
+        this.movieService.updateMovie(title, String firstNameDirector, String lastNameDirector, year, length);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
