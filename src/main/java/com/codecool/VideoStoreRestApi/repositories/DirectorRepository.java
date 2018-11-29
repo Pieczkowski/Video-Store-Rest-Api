@@ -1,10 +1,14 @@
 package com.codecool.VideoStoreRestApi.repositories;
 
-import com.codecool.VideoStoreRestApi.Model.Director;
-import com.codecool.VideoStoreRestApi.Model.Movie;
+import com.codecool.VideoStoreRestApi.model.Director;
+import com.codecool.VideoStoreRestApi.model.Movie;
 import org.springframework.data.repository.CrudRepository;
 
-public interface DirectorRepository extends CrudRepository<Director, Long> {
+import java.util.Collection;
+import java.util.List;
 
-//    Collection<Movie> getMoviesByDirectorId(int id_director);
+public interface DirectorRepository extends CrudRepository<Director, Long> {
+//    Collection<Director> findByFirst_nameAndLast_name(String firstName, String lastName);
+    boolean existsDirectorByFirst_namAndLast_name(String firstName, String lastName);
+    Director getDirectorByFirst_nameAndLast_name(String firstName, String lastName);
 }

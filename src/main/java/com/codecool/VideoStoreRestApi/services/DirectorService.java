@@ -2,6 +2,7 @@ package com.codecool.VideoStoreRestApi.services;
 
 import com.codecool.VideoStoreRestApi.Model.Director;
 import com.codecool.VideoStoreRestApi.Model.Movie;
+import com.codecool.VideoStoreRestApi.model.Director;
 import com.codecool.VideoStoreRestApi.repositories.DirectorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -56,4 +57,15 @@ public class DirectorService {
 //    public Collection<Movie> getDirectorMovies(int id){
 //        return this.directorRepository.getMoviesByDirectorId(id);
 //    }
+
+    public void saveDirector(Director director){
+    this.directorRepository.save(director);
+    }
+
+
+    public boolean isDirectorExist(String firstName, String lastName){
+        return this.directorRepository.existsDirectorByFirst_namAndLast_name(firstName, lastName);
+    }
+    public Director getDirector(String firstName, String lastName){
+        return this.directorRepository.getDirectorByFirst_nameAndLast_name(firstName, lastName);)
 }
