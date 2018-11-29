@@ -24,7 +24,7 @@ public class MovieService {
     }
 
     public Collection<Movie> getAll() {
-        return this.movieRepository.findAll();
+        return this.movieRepository.findMovieByArchivedIsFalse();
     }
 
     public void createMovie(String title, String firstNameDirector, String lastNameDirector, String yearAsString, int length) {
@@ -85,9 +85,9 @@ public class MovieService {
 
     public void deleteAllMovies() {
         List<Movie> listMovies = this.movieRepository.findAll();
-        for (int i = 0; i < listMovies.size(); i++) {
-            listMovies.get(i).setArchived(true);
-            this.movieRepository.save(listMovies.get(i));
+        for (Movie movie : listMovies) {
+            movie.setArchived(true);
+            this.movieRepository.save(movie);
         }
     }
 
