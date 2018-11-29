@@ -43,7 +43,7 @@ public class DirectorService {
             director.setFirstName(first_name);
         }
         if(last_name != null){
-            director.setLast_name(last_name);
+            director.setLastName(last_name);
         }
         this.directorRepository.save(director);
     }
@@ -51,7 +51,7 @@ public class DirectorService {
     public void createDirector(String first_name, String last_name) {
         Director director = new Director();
         director.setFirstName(first_name);
-        director.setLast_name(last_name);
+        director.setLastName(last_name);
 
         this.directorRepository.save(director);
     }

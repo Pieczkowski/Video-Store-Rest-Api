@@ -67,7 +67,7 @@ public class MovieService {
     private Director setDirector(String firstNameDirector, String lastNameDirector){
         Director director = new Director();
         director.setFirstName(firstNameDirector);
-        director.setLast_name(lastNameDirector);
+        director.setLastName(lastNameDirector);
         this.directorService.saveDirector(director);
         return director;
     }
