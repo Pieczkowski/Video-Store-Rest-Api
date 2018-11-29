@@ -1,5 +1,6 @@
 package com.codecool.VideoStoreRestApi.controllers;
 
+import com.codecool.VideoStoreRestApi.Exception.MovieNotFoundException;
 import com.codecool.VideoStoreRestApi.model.Movie;
 import com.codecool.VideoStoreRestApi.services.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +41,6 @@ public class MovieController {
                          @RequestParam(value = "idDirector", required = false) Integer idDirector,
                          @RequestParam(value = "year", required = false) String yearAsString,
                          @RequestParam(value = "length", required = false) Integer length){
-
         this.movieService.updateMovie(id, title, idDirector, yearAsString, length);
     }
 

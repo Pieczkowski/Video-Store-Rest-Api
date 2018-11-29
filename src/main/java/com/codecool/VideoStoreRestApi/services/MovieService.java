@@ -1,5 +1,6 @@
 package com.codecool.VideoStoreRestApi.services;
 
+import com.codecool.VideoStoreRestApi.Exception.MovieNotFoundException;
 import com.codecool.VideoStoreRestApi.model.Director;
 import com.codecool.VideoStoreRestApi.model.Movie;
 import com.codecool.VideoStoreRestApi.repositories.MovieRepository;
@@ -22,7 +23,9 @@ public class MovieService {
     }
 
     public Collection<Movie> getAll() {
-        return this.movieRepository.findMovieByArchivedIsFalse();
+        Collection<Movie> movieList = this.movieRepository.findMovieByArchivedIsFalse();
+        if(movieList.isEmpty()) throw new MovieNotFoundException("no any movie was found");
+        return movieList;
     }
 
     public void createMovie(String title, String firstNameDirector, String lastNameDirector, String yearAsString, int length) {
@@ -46,6 +49,8 @@ public class MovieService {
 
     public void updateMovie(Long id, String title, Integer idDirector, String yearAsString, Integer length){
         Movie movie = this.movieRepository.findOne(id);
+        if(movie == null) throw new MovieNotFoundException("movie was not found");
+
         if(title != null){
             movie.setTitle(title);
         }
@@ -64,12 +69,14 @@ public class MovieService {
 
     public void deleteMovie(Long id) {
        Movie movie = this.movieRepository.findOne(id);
+       if(movie == null) throw new MovieNotFoundException("movie was not found");
        movie.setArchived(true);
        this.movieRepository.save(movie);
     }
 
     public void deleteAllMovies() {
         List<Movie> listMovies = this.movieRepository.findAll();
+        if(listMovies.isEmpty()) throw new MovieNotFoundException("no any movie was found");
         for (Movie movie : listMovies) {
             movie.setArchived(true);
             this.movieRepository.save(movie);
@@ -77,7 +84,9 @@ public class MovieService {
     }
 
     public Movie getById(Long id) {
-        return this.movieRepository.getMovieByIdMovieAndArchivedIsFalse(id);
+        Movie movie = this.movieRepository.getMovieByIdMovieAndArchivedIsFalse(id);
+        if(movie == null) throw new MovieNotFoundException("movie was not found");
+        return movie;
     }
 
     private boolean checkIfDirectorExist(String firstNameDirector, String lastNameDirector){
