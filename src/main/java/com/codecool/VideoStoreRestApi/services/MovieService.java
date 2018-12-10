@@ -24,7 +24,7 @@ public class MovieService {
 
     public Collection<Movie> getAll() {
         Collection<Movie> movieList = this.movieRepository.findMovieByArchivedIsFalse();
-        if(movieList.isEmpty()) throw new MovieNotFoundException("no any movie was found");
+        if(movieList.isEmpty()) throw new MovieNotFoundException("no movies were found");
         return movieList;
     }
 
@@ -49,7 +49,7 @@ public class MovieService {
 
     public void updateMovie(Long id, String title, Integer idDirector, String yearAsString, Integer length){
         Movie movie = this.movieRepository.findOne(id);
-        if(movie == null) throw new MovieNotFoundException("movie was not found");
+        if(movie == null) throw new MovieNotFoundException("no movie was found");
 
         if(title != null){
             movie.setTitle(title);
@@ -69,14 +69,14 @@ public class MovieService {
 
     public void deleteMovie(Long id) {
        Movie movie = this.movieRepository.findOne(id);
-       if(movie == null) throw new MovieNotFoundException("movie was not found");
+       if(movie == null) throw new MovieNotFoundException("no movie was found");
        movie.setArchived(true);
        this.movieRepository.save(movie);
     }
 
     public void deleteAllMovies() {
         List<Movie> listMovies = this.movieRepository.findAll();
-        if(listMovies.isEmpty()) throw new MovieNotFoundException("no any movie was found");
+        if(listMovies.isEmpty()) throw new MovieNotFoundException("no movies were found");
         for (Movie movie : listMovies) {
             movie.setArchived(true);
             this.movieRepository.save(movie);
@@ -85,7 +85,7 @@ public class MovieService {
 
     public Movie getById(Long id) {
         Movie movie = this.movieRepository.getMovieByIdMovieAndArchivedIsFalse(id);
-        if(movie == null) throw new MovieNotFoundException("movie was not found");
+        if(movie == null) throw new MovieNotFoundException("no movie was found");
         return movie;
     }
 

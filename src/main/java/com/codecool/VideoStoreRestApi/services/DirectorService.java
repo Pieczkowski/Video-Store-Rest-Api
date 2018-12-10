@@ -23,31 +23,31 @@ public class DirectorService {
 
     public Collection<Director> getAllDirectors() {
         Collection<Director> directorsList = this.directorRepository.findAll();
-        if(directorsList.isEmpty()) throw new DirectorNotFoundException("no any director was found");
+        if(directorsList.isEmpty()) throw new DirectorNotFoundException("no directors were found");
         return directorsList;
     }
 
     public Director getDirectorById(Long id) {
         Director director = this.directorRepository.findOne(id);
-        if(director == null) throw new DirectorNotFoundException("director was found");
+        if(director == null) throw new DirectorNotFoundException("no director was found");
         return director;
     }
 
     public void deleteDirectorById(Long idDirector) {
         Director director = getDirectorById(idDirector);
-        if(director == null) throw new DirectorNotFoundException("director was found");
+        if(director == null) throw new DirectorNotFoundException("no director was found");
         this.directorRepository.delete(idDirector);
     }
 
     public void deleteAllDirectors() {
         Collection<Director> directorsList = this.directorRepository.findAll();
-        if(directorsList.isEmpty()) throw new DirectorNotFoundException("no any director was found");
+        if(directorsList.isEmpty()) throw new DirectorNotFoundException("no directors were found");
         this.directorRepository.deleteAll();
     }
 
     public void updateDirector(Long id, String first_name, String last_name) {
         Director director = getDirectorById(id);
-        if(director == null) throw new DirectorNotFoundException("director was found");
+        if(director == null) throw new DirectorNotFoundException("no director was found");
         if(first_name != null){
             director.setFirstName(first_name);
         }
@@ -75,13 +75,13 @@ public class DirectorService {
 
     public Director getDirector(String firstName, String lastName) {
         Director director = this.directorRepository.getDirectorByFirstNameAndLastName(firstName, lastName);
-        if(director == null) throw new DirectorNotFoundException("director was found");
+        if(director == null) throw new DirectorNotFoundException("no director was found");
         return director;
     }
 
     public Collection<Movie> getDirectorMovies(Long idDirector){
         Collection<Movie> moviesList = this.movieRepository.findMovieByDirectorsIdDirector(idDirector);
-        if(moviesList.isEmpty()) throw new DirectorNotFoundException("no any director was found");
+        if(moviesList.isEmpty()) throw new DirectorNotFoundException("no director was found");
         return moviesList;
 
     }
