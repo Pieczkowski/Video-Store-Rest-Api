@@ -7,6 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class VideoStoreRestApiApplication {
 
 	public static void main(String[] args) {
+
+        ClassLogger.videoStoreRestApiApplicationLogger.info("Logger is configured correctly");
 		SpringApplication.run(VideoStoreRestApiApplication.class, args);
 	}
 }
