@@ -9,7 +9,7 @@ public class VideoStoreRestApiApplication {
 
 	public static void main(String[] args) {
 
-        ClassLogger.videoStoreRestApiApplicationLogger.info("Logger is configured correctly");
+//		ClassLogger.videoStoreRestApiApplicationLogger.info("Logger is configured correctly");
 		SpringApplication.run(VideoStoreRestApiApplication.class, args);
 	}
 }
