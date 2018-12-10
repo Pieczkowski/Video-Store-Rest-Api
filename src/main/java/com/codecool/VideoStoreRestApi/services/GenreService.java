@@ -23,13 +23,13 @@ public class GenreService {
 
     public Collection<Genre> getAll() {
         Collection<Genre> genreList = this.genreRepository.findAll();
-        if(genreList.isEmpty()) throw new GenreNotFoundException("no any genre was found");
+        if(genreList.isEmpty()) throw new GenreNotFoundException("no genres were found");
         return genreRepository.findAll();
     }
 
     public Genre getById(Long id) {
         Genre genre = genreRepository.findOne(id);
-        if(genre == null) throw new GenreNotFoundException("no any genre was found");
+        if(genre == null) throw new GenreNotFoundException("no genre was found");
         return genre;
     }
 
@@ -57,7 +57,7 @@ public class GenreService {
 
     public Collection<Movie> getGenreMovies(Long id) {
         Collection<Movie> moviesList = genreRepository.findOne(id).getMovies();
-        if(moviesList.isEmpty()) throw new GenreNotFoundException("no any genre was found");
+        if(moviesList.isEmpty()) throw new GenreNotFoundException("no genres were found");
         return moviesList;
     }
 }
