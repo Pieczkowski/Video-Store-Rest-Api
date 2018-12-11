@@ -32,7 +32,7 @@ public class GlobalControllerExceptionHandler {
         // log
 
         // send mail
-        mailService.send("tirvwar@gmail.com", "Video-Store Internal Server Error 500", "Exception " + ex + "\nCaused by: method" + request.getMethod()
+        mailService.send("testjavaspringboot@onet.pl", "Video-Store Internal Server Error 500", "Exception " + ex + "\nCaused by: method" + request.getMethod()
                 + "\npath: "+ request.getRequestURI());
         return "internalError";
     }

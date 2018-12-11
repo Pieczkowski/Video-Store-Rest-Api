@@ -10,6 +10,9 @@ import java.util.Properties;
 @Configuration
 public class OnetSenderConfig {
 
+    private static final String MAILUSERNAME = "testjavaspringboot@onet.pl";
+    private static final String MAILPASSWORD = "Adam1234567890";
+
     @Bean
     public MailSender getMailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
@@ -27,5 +30,9 @@ public class OnetSenderConfig {
         properties.put("mail.debug", "true");
 
         return mailSender;
+    }
+
+    public static String getMAILUSERNAME() {
+        return MAILUSERNAME;
     }
 }

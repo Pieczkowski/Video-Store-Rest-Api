@@ -22,7 +22,7 @@ public class InfoMailServiceImpl implements InfoMailService {
             message.setTo(to);
             message.setSubject(subject);
             message.setText(text);
-            message.setFrom("gowniak1@spoko.pl");
+            message.setFrom(OnetSenderConfig.getMAILUSERNAME());
 
             sender.send(message);
         } catch (MailException e){
