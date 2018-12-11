@@ -55,5 +55,13 @@ public class GlobalControllerExceptionHandler {
         return model;
     }
 
-
+    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR) // 500
+    @ExceptionHandler(value = Exception.class)
+    public ModelAndView catchThemAll(HttpServletRequest request){
+        ModelAndView model = new ModelAndView();
+        model.addObject("url", request.getRequestURL());
+        model.setViewName("error");
+        System.out.println("Internal");
+        return model;
+    }
 }
