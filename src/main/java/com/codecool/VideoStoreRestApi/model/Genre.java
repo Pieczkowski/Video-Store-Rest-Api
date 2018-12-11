@@ -1,5 +1,8 @@
-package com.codecool.VideoStoreRestApi.Model;
+package com.codecool.VideoStoreRestApi.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -10,11 +13,14 @@ public class Genre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(columnDefinition = "serial")
     private int id_genre;
     private String name;
     private String description;
 
     @ManyToMany(mappedBy = "genres")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id_movie")
+    @JsonIdentityReference(alwaysAsId = true)
     private Set<Movie> movies = new HashSet<>();
 
     public int getId_genre() {
@@ -47,5 +53,9 @@ public class Genre {
 
     public void setMovies(Set<Movie> movies) {
         this.movies = movies;
+    }
+
+    public void addMovies(Movie movie){
+        movies.add(movie);
     }
 }

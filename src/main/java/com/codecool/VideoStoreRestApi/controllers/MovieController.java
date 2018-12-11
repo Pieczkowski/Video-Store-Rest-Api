@@ -1,9 +1,11 @@
 package com.codecool.VideoStoreRestApi.controllers;
 
+import com.codecool.VideoStoreRestApi.model.Movie;
+import com.codecool.VideoStoreRestApi.services.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
+import java.util.Collection;
 
 
 @RestController
@@ -19,42 +21,40 @@ public class MovieController {
 
     @RequestMapping(method = RequestMethod.GET)
     public Collection<Movie> getAllMovies(){
-        return movieService.getAll();
+        return this.movieService.getAll();
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public void postMovie(@RequestParam("title") String title,
-                          @RequestParam("director") String director,
-                          @RequestParam("year") Date year,
+                          @RequestParam("firstNameDirector") String firstNameDirector,
+                          @RequestParam("lastNameDirector") String lastNameDirector,
+                          @RequestParam("year") String yearAsString,
                           @RequestParam("length") int length
                           ){
-
-        return movieService.createMovie(title, director, year, length);
+        this.movieService.createMovie(title, firstNameDirector, lastNameDirector, yearAsString, length);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public void putMovie(@PathVariable("id") int id,
+    public void putMovie(@PathVariable("id") Long id,
                          @RequestParam(value = "title", required = false) String title,
-                         @RequestParam(value = "director", required = false) String director,
-                         @RequestParam(value = "genre", required = false) String genre,
-                         @RequestParam(value = "year", required = false) Date year,
-                         @RequestParam(value = "length", required = false) int length){
-
-        return movieService.updateMovie(id, title, director, genre, year, length);
+                         @RequestParam(value = "idDirector", required = false) Integer idDirector,
+                         @RequestParam(value = "year", required = false) String yearAsString,
+                         @RequestParam(value = "length", required = false) Integer length){
+        this.movieService.updateMovie(id, title, idDirector, yearAsString, length);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void deleteMovie(@PathVariable(value = "id") int id){
-        return movieService.deleteMovie(id);
+    public void deleteMovie(@PathVariable(value = "id") Long id){
+        movieService.deleteMovie(id);
     }
+
     @RequestMapping(method = RequestMethod.DELETE)
     public void deleteAllMovies(){
-        return movieService.deleteAllMovies();
+        movieService.deleteAllMovies();
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Movie getMovie(@PathVariable("id") int id){
+    public Movie getMovie(@PathVariable("id") Long id){
         return movieService.getById(id);
     }
-
 }

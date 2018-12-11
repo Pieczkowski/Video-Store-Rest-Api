@@ -1,8 +1,12 @@
 package com.codecool.VideoStoreRestApi.controllers;
 
-
+import com.codecool.VideoStoreRestApi.model.Genre;
+import com.codecool.VideoStoreRestApi.model.Movie;
+import com.codecool.VideoStoreRestApi.services.GenreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Collection;
 
 @RestController
 @RequestMapping(value = "/store/genre")
@@ -21,27 +25,28 @@ public class GenreController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Genre getGenre(@PathVariable("id") int id){
+    public Genre getGenre(@PathVariable("id") Long id){
         return genreService.getById(id);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public void putGenre(@PathVariable("id") int id,
+    public void putGenre(@PathVariable("id") Long id,
                          @RequestParam(value = "title", required = false) String title,
-                         @RequestParam(value = "desc", required = false) String description){
+                         @RequestParam(value = "desc", required = false) String description,
+                         @RequestParam(value = "movieId", required = false) Long movieId){
 
-        return genreService.updateGenre(id, title, description);
+        genreService.updateGenre(id, title, description, movieId);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public void postGenre(@RequestParam(value = "title") String title,
+    public void postGenre(@RequestParam(value = "name") String title,
                           @RequestParam(value = "desc") String description){
 
-        return genreService.createGenre(title, description);
+        genreService.createGenre(title, description);
     }
 
     @RequestMapping(value = "/{id}/movies", method = RequestMethod.GET)
-    public Collection<Movie> getGenreMovies(@PathVariable("id") int id){
+    public Collection<Movie> getGenreMovies(@PathVariable("id") Long id){
         return genreService.getGenreMovies(id);
     }
 

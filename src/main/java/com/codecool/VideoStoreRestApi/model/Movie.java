@@ -1,5 +1,6 @@
-package com.codecool.VideoStoreRestApi.Model;
+package com.codecool.VideoStoreRestApi.model;
 
+import com.fasterxml.jackson.annotation.*;
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.HashSet;
@@ -11,29 +12,37 @@ public class Movie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id_movie;
+    @Column(columnDefinition = "serial")
+    private long idMovie;
     private String title;
 
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
             name = "movies_genres",
-            joinColumns = { @JoinColumn(name = "id_movie") },
+            joinColumns = { @JoinColumn(name = "idMovie") },
             inverseJoinColumns = { @JoinColumn(name = "id_genre") }
     )
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id_genre")
+    @JsonIgnoreProperties({"description", "id_genre", "movies"})
     private Set<Genre> genres = new HashSet<>();
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name="idDirector")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idDirector")
+    @JsonIgnoreProperties({"idDirector", "movies"})
     private Director directors;
 
     private Date year;
     private int length;
+    @Column( columnDefinition = "boolean default false")
+    private Boolean archived;
 
-    public int getId_movie() {
-        return id_movie;
+    public long getIdMovie() {
+        return idMovie;
     }
 
-    public void setId_movie(int id_movie) {
-        this.id_movie = id_movie;
+    public void setIdMovie(long idMovie) {
+        this.idMovie = idMovie;
     }
 
     public String getTitle() {
@@ -76,6 +85,11 @@ public class Movie {
         this.genres = genres;
     }
 
+    public Boolean getArchived() {
+        return archived;
+    }
 
-
+    public void setArchived(Boolean archived) {
+        this.archived = archived;
+    }
 }
