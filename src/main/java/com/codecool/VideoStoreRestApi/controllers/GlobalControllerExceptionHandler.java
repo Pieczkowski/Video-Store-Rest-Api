@@ -5,8 +5,8 @@ import com.codecool.VideoStoreRestApi.Exceptions.GenreNotFoundException;
 import com.codecool.VideoStoreRestApi.Exceptions.MovieNotFoundException;
 import com.codecool.VideoStoreRestApi.services.statusInfo.InfoMailService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.config.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -46,11 +46,13 @@ public class GlobalControllerExceptionHandler {
         return model;
     }
 
-
-    @ExceptionHandler(value = ResourceNotFoundException.class)
-    public String handle404Exception(){
-        System.out.println("404");
-        return "error";
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST) // 400
+    @ExceptionHandler(value = MissingServletRequestParameterException.class)
+    public ModelAndView noParameterExceptionHandler(HttpServletRequest request){
+        ModelAndView model = new ModelAndView();
+        model.addObject("url", request.getRequestURL());
+        model.setViewName("error");
+        return model;
     }
 
 
