@@ -18,7 +18,7 @@ REST API built using spring boot and postgresql that uses specific end points.
 
 1. Download the code
 
-    git clone https://github.com/CodecoolKRK20171/java-ee-rest-api-crud_summer.git
+    git clone https://github.com/Polikkox/Video-Store-Rest-Api.git
     
 2. Run VideoStoreRestApiApplication
 
